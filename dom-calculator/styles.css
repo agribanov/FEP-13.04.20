@@ -1,0 +1,12 @@
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+.result {
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}
