@@ -1,0 +1,19 @@
+.figure {
+    position: absolute;
+}
+
+.figure.square {
+    height: 100px;
+    width: 100px;
+}
+
+.figure.rectangle {
+    height: 100px;
+    width: 300px;
+}
+
+.figure.circle {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}

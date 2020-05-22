@@ -10,12 +10,17 @@
         <script src="./script.js" defer></script>
     </head>
     <body>
-        <input type="text" id="boxColor" />
-        <div id="container">
-            <div id="box" class="box" style="border-radius: 50%;"></div>
-        </div>
+        <input type="number" id="topPosition" />
+        <input type="number" id="leftPosition" />
+        <button id="addBtn">Add</button>
+        <div id="container"></div>
 
-        <a href="http://google.com" id="link">google</a>
+        <script type="text/template" id="shapeTemaplate">
+            <div
+                class="shape"
+                style="top: {{top}}px; left: {{left}}px"
+            ></div>
+        </script>
     </body>
 </html>
 

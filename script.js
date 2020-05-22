@@ -1,61 +1,21 @@
-// const boxEl = document.getElementById('box');
-// const colorInput = document.getElementById('boxColor');
+const topPositionInput = document.getElementById('topPosition');
+const leftPositionInput = document.getElementById('leftPosition');
+const containerEl = document.getElementById('container');
+const shapeTemplate = document.getElementById('shapeTemaplate').innerHTML;
 
-// document.addEventListener('mousemove', onDocumentClick);
-// document.addEventListener('keydown', onDocumentKeyDown);
-// colorInput.addEventListener('change', onInputKeyDown);
+document.getElementById('addBtn').addEventListener('click', onAddBtnClick);
+containerEl.addEventListener('click', onContainerClick);
 
-// function onDocumentClick(e) {
-//     // console.log('clicked', e);
+function onAddBtnClick() {
+    // console.log(shapeTemaplateEl);
 
-//     if (e.altKey) {
-//         boxEl.style.left = e.x - 50 + 'px';
-//         boxEl.style.top = e.y - 50 + 'px';
-//     }
-// }
+    containerEl.innerHTML += shapeTemplate
+        .replace('{{top}}', topPositionInput.value)
+        .replace('{{left}}', leftPositionInput.value);
+}
 
-// function onDocumentKeyDown(e) {
-//     let color;
+function onContainerClick(e) {
+    console.log('clicked on container', e.target);
 
-//     switch (e.code) {
-//         case 'KeyR':
-//             color = 'red';
-//             break;
-//         case 'KeyG':
-//             color = 'green';
-//             break;
-//         case 'KeyB':
-//             color = 'blue';
-//             break;
-//         default:
-//             color = 'black';
-//     }
-
-//     boxEl.style.backgroundColor = color;
-// }
-
-// function onInputKeyDown(e) {
-//     console.log(e, colorInput.value);
-
-//     boxEl.style.backgroundColor = colorInput.value;
-// }
-
-document.addEventListener('click', (e) => {
-    console.log('document click');
-});
-
-document.body.addEventListener('click', () => console.log('body click'));
-
-// document.getElementById('container').addEventListener('click', (e) => {
-//     e.preventDefault();
-
-//     console.log('container click');
-// });
-// document
-//     .getElementById('box')
-//     .addEventListener('click', () => console.log('box click'));
-
-document.getElementById('link').addEventListener('click', (e) => {
-    e.preventDefault();
-    console.log(e);
-});
+    e.target.classList.toggle('hidden');
+}
