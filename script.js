@@ -1,21 +1,18 @@
-const topPositionInput = document.getElementById('topPosition');
-const leftPositionInput = document.getElementById('leftPosition');
-const containerEl = document.getElementById('container');
-const shapeTemplate = document.getElementById('shapeTemaplate').innerHTML;
-
-document.getElementById('addBtn').addEventListener('click', onAddBtnClick);
-containerEl.addEventListener('click', onContainerClick);
-
-function onAddBtnClick() {
-    // console.log(shapeTemaplateEl);
-
-    containerEl.innerHTML += shapeTemplate
-        .replace('{{top}}', topPositionInput.value)
-        .replace('{{left}}', leftPositionInput.value);
+function createrCounter(counts) {
+    return {
+        count: function () {
+            return ++counts;
+        },
+    };
 }
 
-function onContainerClick(e) {
-    console.log('clicked on container', e.target);
+const counter = createrCounter(0);
+const counter10 = createrCounter(10);
 
-    e.target.classList.toggle('hidden');
-}
+console.log(counter.count());
+console.log(counter.count());
+
+console.log(counter10.count());
+console.log(counter10.count());
+
+counter10 = null;
