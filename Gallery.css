@@ -1,0 +1,6 @@
+.gallery-photo {
+    display: none;
+}
+.gallery-photo.visible {
+    display: block;
+}
