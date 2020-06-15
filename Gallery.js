@@ -1,52 +1,103 @@
-function Gallery(containerEl, photos) {
-    this.containerEl = containerEl;
+class Gallery {
+    static VISIBLE_CLASS = 'visible';
 
-    this.currentPhoto = -1;
+    currentPhoto = -1;
 
-    this.generateHtml(photos);
-    this.showNextPhoto();
-    setInterval(this.showNextPhoto.bind(this), 2000);
-}
+    constructor(containerEl, photos) {
+        this.containerEl = containerEl;
 
-Gallery.VISIBLE_CLASS = 'visible';
+        this.generateHtml(photos);
+        this.showNextPhoto();
 
-Gallery.prototype.generateHtml = function (photos) {
-    const lis = photos.map(
-        (photo, index) =>
-            `<li class="gallery-photo"><img src="${photo}?${index}" /></li>`
-    );
+        setInterval(this.showNextPhoto, 2000);
+    }
 
-    this.rootElement = document.createElement('ul');
-    this.rootElement.insertAdjacentHTML('beforeEnd', `${lis.join('')}`);
+    onRootElementClick = (e) => {
+        this.showNextPhoto();
+    };
 
-    this.containerEl.append(this.rootElement);
+    generateHtml(photos) {
+        const lis = photos.map(
+            (photo, index) =>
+                `<li class="gallery-photo"><img src="${photo}?${index}" /></li>`
+        );
 
-    this.rootElement.addEventListener(
-        'click',
-        this.onRootElementClick.bind(this)
-    );
-};
+        this.rootElement = document.createElement('ul');
+        this.rootElement.insertAdjacentHTML('beforeEnd', `${lis.join('')}`);
 
-Gallery.prototype.onRootElementClick = function (e) {
-    console.log('clicked on ul');
+        this.containerEl.append(this.rootElement);
 
-    this.showNextPhoto();
-};
+        this.rootElement.addEventListener('click', this.onRootElementClick);
+    }
 
-Gallery.prototype.showNextPhoto = function () {
-    if (this.rootElement.children[this.currentPhoto]) {
-        this.rootElement.children[this.currentPhoto].classList.remove(
+    showNextPhoto = () => {
+        if (this.rootElement.children[this.currentPhoto]) {
+            this.rootElement.children[this.currentPhoto].classList.remove(
+                Gallery.VISIBLE_CLASS
+            );
+        }
+
+        this.currentPhoto++;
+
+        if (this.currentPhoto === this.rootElement.children.length) {
+            this.currentPhoto = 0;
+        }
+
+        this.rootElement.children[this.currentPhoto].classList.add(
             Gallery.VISIBLE_CLASS
         );
-    }
+    };
+}
 
-    this.currentPhoto++;
+// function Gallery(containerEl, photos) {
+//     this.containerEl = containerEl;
 
-    if (this.currentPhoto === this.rootElement.children.length) {
-        this.currentPhoto = 0;
-    }
+//     this.currentPhoto = -1;
 
-    this.rootElement.children[this.currentPhoto].classList.add(
-        Gallery.VISIBLE_CLASS
-    );
-};
+//     this.generateHtml(photos);
+//     this.showNextPhoto();
+//     setInterval(this.showNextPhoto.bind(this), 2000);
+// }
+
+// Gallery.VISIBLE_CLASS = 'visible';
+
+// Gallery.prototype.generateHtml = function (photos) {
+//     const lis = photos.map(
+//         (photo, index) =>
+//             `<li class="gallery-photo"><img src="${photo}?${index}" /></li>`
+//     );
+
+//     this.rootElement = document.createElement('ul');
+//     this.rootElement.insertAdjacentHTML('beforeEnd', `${lis.join('')}`);
+
+//     this.containerEl.append(this.rootElement);
+
+//     this.rootElement.addEventListener(
+//         'click',
+//         this.onRootElementClick.bind(this)
+//     );
+// };
+
+// Gallery.prototype.onRootElementClick = function (e) {
+//     console.log('clicked on ul');
+
+//     this.showNextPhoto();
+// };
+
+// Gallery.prototype.showNextPhoto = function () {
+//     if (this.rootElement.children[this.currentPhoto]) {
+//         this.rootElement.children[this.currentPhoto].classList.remove(
+//             Gallery.VISIBLE_CLASS
+//         );
+//     }
+
+//     this.currentPhoto++;
+
+//     if (this.currentPhoto === this.rootElement.children.length) {
+//         this.currentPhoto = 0;
+//     }
+
+//     this.rootElement.children[this.currentPhoto].classList.add(
+//         Gallery.VISIBLE_CLASS
+//     );
+// };

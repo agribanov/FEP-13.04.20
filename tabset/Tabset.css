@@ -1,0 +1,41 @@
+.tabset-wrapper,
+.tabset-elements {
+    width: 100%;
+}
+
+.tabset-titles {
+    padding: 10px 10px 0;
+    border-bottom: 1px solid lightyellow;
+}
+
+.tabset-elements {
+    border: 1px solid lightyellow;
+    border-top-width: 0px;
+}
+
+.tabset-heading {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid transparent;
+    border-bottom: 0;
+    margin-bottom: -1px;
+    cursor: pointer;
+}
+
+.tabset-heading:hover {
+    border-color: lightgoldenrodyellow;
+}
+
+.tabset-heading.active {
+    border-color: lightyellow;
+    border-bottom: 1px solid rgb(46, 52, 54);
+}
+
+.tabset-element {
+    padding: 10px;
+    display: none;
+}
+
+.tabset-element.active {
+    display: block;
+}
