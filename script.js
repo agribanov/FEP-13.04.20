@@ -1,32 +1,41 @@
-// const photos = [
-//     'https://picsum.photos/200/300',
-//     'https://picsum.photos/200/300',
-//     'https://picsum.photos/200/300',
-//     'https://picsum.photos/200/300',
-//     'https://picsum.photos/200/300',
-//     'https://picsum.photos/200/300',
-//     'https://picsum.photos/200/300',
-//     'https://picsum.photos/200/300',
-//     'https://picsum.photos/200/300',
-//     'https://picsum.photos/200/300',
-// ];
+// HTTP
+// HTTPS
+// FTP
+// SFTP
 
-// new Gallery(document.getElementById('container'), photos);
-new Tabset(document.getElementById('container'));
+// GET
 
-// class Animal {
-//     constructor() {
-//         this.name = 'Animal';
-//     }
-//     run() {
-//         console.log('runing');
-//     }
-// }
+// POST
+// PUT
 
-// class Dog extends Animal {
-//     run() {
-//         console.log('dog running');
-//         super.run();
-//         console.log('asdf');
-//     }
-// }
+// DELETE
+
+// HTTP Request
+//     URL
+//         protocol
+//         domain (host, hostName)
+//         path
+//         queryParams
+//     METHOD
+//         GET, POST, PUT, DELETE
+//     BODY
+//         Data
+//     HEADERS
+
+// HTTP Response
+//     Data
+//     STATUS
+//     Response
+
+// DNS
+
+// AJAX
+// JSON
+
+fetch('https://jsonplaceholder.typicode.com/users')
+    .then((res) => {
+        return res.json();
+    })
+    .then((data) => {
+        console.log(data);
+    });
