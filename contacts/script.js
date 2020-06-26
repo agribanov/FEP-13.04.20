@@ -11,6 +11,7 @@ const userTemplate = document.getElementById('userTemplate').innerHTML;
 let list = [];
 
 listEl.addEventListener('click', onListElClick);
+addBtnEl.addEventListener('click', onaAdBtnElClick);
 
 init();
 
@@ -18,6 +19,10 @@ function onListElClick(e) {
     if (e.target.classList.contains(DELETE_BTN_CLASS)) {
         deleteItem(e.target.closest('.item').dataset.id);
     }
+}
+
+function onaAdBtnElClick(e) {
+    submitForm();
 }
 
 function init() {
@@ -54,4 +59,31 @@ function deleteItem(id) {
     list = list.filter((item) => item.id != id);
 
     renderList(list);
+}
+
+function submitForm() {
+    const item = {
+        name: nameInputEl.value,
+        phone: phoneInputEl.value,
+    };
+
+    fetch(URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(item),
+    })
+        .then((res) => res.json())
+        .then((data) => {
+            list.push(data);
+            renderList(list);
+
+            clearForm();
+        });
+}
+
+function clearForm() {
+    nameInputEl.value = '';
+    phoneInputEl.value = '';
 }
