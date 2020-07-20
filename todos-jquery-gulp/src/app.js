@@ -1,4 +1,5 @@
 $(() => {
+    console.log('Hello world');
     const TODO_ITEM_CLASS = 'task-item';
     const DELETE_BTN_CLASS = 'delete-btn';
     const $addTaskForm = $('#addTaskForm');
