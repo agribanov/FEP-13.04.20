@@ -1,6 +1,11 @@
-class Controller {
+import ToDoCollection from '../model/collection';
+import { todosUrl } from '../config';
+import ListView from '../view/list';
+import FormView from '../view/form';
+
+export default class Controller {
     constructor() {
-        this.collection = new ToDoCollection(contactsUrl);
+        this.collection = new ToDoCollection(todosUrl);
         this.listView = new ListView({
             onDelete: (id) => {
                 this.collection.delete(id).then(() => this.renderData());

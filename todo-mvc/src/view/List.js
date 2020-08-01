@@ -1,4 +1,4 @@
-class ListView {
+export default class ListView {
     constructor(config) {
         this.config = config; // {onDelete: () => {}}
         this.createElement();

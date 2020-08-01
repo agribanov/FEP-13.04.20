@@ -1,6 +1,6 @@
 let urlWeakMap = new WeakMap();
 
-class ToDoModel {
+export default class ToDoModel {
     get url() {
         return urlWeakMap.get(this);
     }
@@ -23,7 +23,7 @@ class ToDoModel {
 
     delete() {
         return fetch(`${this.url}/${this.id}`, {
-            method: 'DELETE',
+            method: 'DELETE'
         });
     }
 
@@ -33,9 +33,9 @@ class ToDoModel {
         return fetch(`${this.url}/${this.id}`, {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify(this),
+            body: JSON.stringify(this)
         });
         console.log('model toggling', this.id);
     }

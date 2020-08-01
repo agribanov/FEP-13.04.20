@@ -1,4 +1,4 @@
-class FormView {
+export default class FormView {
     constructor(config) {
         this.config = config;
 
@@ -10,7 +10,7 @@ class FormView {
     onSubmit(e) {
         e.preventDefault();
         this.config.onSave({
-            title: this.titleInput.value,
+            title: this.titleInput.value
         });
     }
 
